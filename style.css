@@ -1,7 +1,7 @@
 body {
-    background: linear-gradient(to bottom, #ffffff 0%, #99ccff 100%);
+    background: linear-gradient(to bottom, #000000 0%, #9900ff 100%);
     background-size: auto;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 0, 255);
     padding: 10px;
     font-family: sans-serif;
 }
@@ -13,7 +13,7 @@ body {
 
 /* navigation menu */
 nav {
-    background: linear-gradient(to bottom, #99ccff 0%, #ffffff 100%);
+    background: linear-gradient(to bottom, #6600cc 0%, #1a1a1a 100%);
     margin: 0 auto;
     display: flex;
     padding: 5px;
@@ -22,7 +22,7 @@ nav {
 h1 {
     display: flex;
     align-items: center;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 0, 255);
     flex: 1;
     margin: 0;
 }
@@ -41,12 +41,13 @@ h1 {
 
 a {
     text-decoration: none;
-    color: #000000;
+    color: #9900ff;
+    text-shadow: 0 0 10px #fff, 0 0 20px, #fff, 0 0 30px gold, 0 0 40px gold, 0 0 50px gold, 0 0 60px gold, 0 0 70px gold;
 }
 
 /* main container area beneath menu */
 main {
-    background: linear-gradient(to bottom, #99ccff 0%, #ffffff 100%);
+    background: linear-gradient(to bottom, #000000 0%, #9900ff 100%);
     display: flex;
     margin-top: 30px;
     margin-bottom: 500px;
@@ -75,4 +76,29 @@ main {
 
 h2, h3 {
     margin: 0px;
+}
+/* Portfolio styles */
+.content h1 {
+  color: black;
+}
+
+#portfolio {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#portfolio li {
+  background: #9900ff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#portfolio li:hover {
+  background: #9900ff;
+}
+
+#portfolio a {
+  text-decoration: none;
+  color: #000;
 }
