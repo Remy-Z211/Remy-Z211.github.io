@@ -38,7 +38,7 @@ createPlatform(900,450,30,30, "purple");
 createPlatform(1100,450,30,30, "purple");
 createPlatform(1300,450,30,30, "purple");
 createPlatform(1380,300,30,30, "purple");
-createPlatform(1200,190,30,30, "purple");
+createPlatform(1000,190,30,30, "purple");
 createPlatform(1000,190,30,30, "purple");
 createPlatform(800,190,30,30, "purple");
 createPlatform(600,190,30,30, "purple");
