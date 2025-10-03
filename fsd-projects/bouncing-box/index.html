@@ -8,7 +8,8 @@
       .box {
         width: 70px;
         height: 70px;
-        background-color: teal;
+        background-image: ("Images/HogRider.jpg");
+        background-size: contain;
         font-size: 300%;
         text-align: center;
         user-select: none;
@@ -21,14 +22,15 @@
 
       .board {
         height: 100vh;
+        background-image: url("Images/arena.jpeg");
+        background-size: contain;
       }
     </style>
     <!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
   </head>
 
-  <body class="board">
+  <body>
     <!-- HTML for the box -->
-    <div class="box">?</div>
 
     <script>
       (function () {
@@ -49,7 +51,7 @@
         });
 
         // Every 50 milliseconds, call the update Function (see below)
-        setInterval(update, 10);
+        setInterval(update, 50);
 
         // Every time the box is clicked, call the handleBoxClick Function (see below)
         box.on("click", handleBoxClick);
@@ -69,12 +71,9 @@
         //////////////////////////////////////////////////////////////////
 
         // TODO 2 - Variable declarations
-        var positionX = 0
-        var points = 0
-        var speed = 1
-
-
-
+        var positionX = 0;
+        var points = 0;
+        var speed = 1;
 
         /**
          * This Function will be called 20 times/second.
@@ -82,12 +81,15 @@
          * If the box drifts off the screen, turn it around!
          */
         function update() {
-          moveBoxTo(positionX)
           positionX += speed;
-          
-        
+          if (positionX > boardWidth) {
+            speed *= -1;
+          }
+          if (positionX < 0) {
+            speed *= -1;
+          }
 
-          
+          moveBoxTo(positionX);
         }
 
         /**
@@ -98,14 +100,11 @@
          * - move the box to the left side of the screen.
          */
         function handleBoxClick() {
-          positionX = 0
-          changeBoxText(points +=1)
-
- 
+          positionX = 0;
+          points += 1;
+          changeBoxText(points);
+          speed += 1;
         }
-
-
-        
       })();
     </script>
   </body>
