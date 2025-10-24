@@ -8,8 +8,9 @@
       .box {
         width: 70px;
         height: 70px;
-        background-image: url("Images/HogRider.jpg");
+        background-image: url("Images/images.jpg");
         background-size: contain;
+        background-repeat: no-repeat;
         font-size: 300%;
         text-align: center;
         user-select: none;
@@ -22,7 +23,7 @@
 
       .board {
         height: 100vh;
-        background-image: url("Images/arena.jpeg");
+        background-image: url("Images/images (3).jpg");
         background-size: cover;
       }
     </style>
@@ -103,8 +104,9 @@
         function handleBoxClick() {
           positionX = 0;
           points += 1;
+          speed = 5 * points + 10;
           changeBoxText(points);
-          speed += 1;
+          
         }
       })();
     </script>
