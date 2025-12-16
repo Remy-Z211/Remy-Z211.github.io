@@ -29,7 +29,8 @@ var background = function (window) {
         // ANIMATION VARIABLES HERE //////////////////////////////////////
         //////////////////////////////////////////////////////////////////
         // TODO (several):
-      
+      var satty
+      var buildings =[ ]
       
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
@@ -53,16 +54,26 @@ var background = function (window) {
                 var numberOfCircles = 200;
 
                 for (var i = 0; i < numberOfCircles; i++) {
-                var circle = draw.circle(10, "white", "LightGray", 2);
+                var circle = draw.circle(5, "white", "LightGray", 2);
                 circle.x = canvasWidth * Math.random();
                 circle.y = groundY * Math.random();
                 background.addChild(circle);      
                 }
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            
+                for (var i = 0; i < 5; ++i) {
+                    var buildingHeight = 300;
+                    var building = draw.rect(75, buildingHeight, "blue", "Black", 1);
+                    building.x = 200 * i;
+                    building.y = groundY - buildingHeight;
+                    background.addChild(building);
+                    buildings.push(building);
+                    }
             
             // TODO 3: Part 1 - Add a tree
-            
+            satty = draw.bitmap("img/satty.png");
+            satty.x = 500;
+            satty.y = 100;
+            background.addChild(satty);      
             
         } // end of render function - DO NOT DELETE
         
@@ -76,10 +87,20 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 3: Part 2 - Move the tree!
-            
+            satty.x = satty.x - 2.5;
+
+            if (satty.x < -200) {
+            satty.x = canvasWidth;
+            }
             
             // TODO 4: Part 2 - Parallax
-            
+            for (var i = 0; i < buildings.length; i++) {
+                var eachElement = buildings[i];
+                eachElement.x=eachElement.x - 1
+                if (eachElement.x < -200) {
+                eachElement.x = canvasWidth;
+                }
+            }
 
         } // end of update function - DO NOT DELETE
         
