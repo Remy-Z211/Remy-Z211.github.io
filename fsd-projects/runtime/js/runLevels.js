@@ -18,23 +18,72 @@ var runLevels = function (window) {
 
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
-    
-    function createSawBlade(x,y) {
+
+    function createSawBlade(x, y) {
       var hitZoneSize = 25;
-    var damageFromObstacle = 10;
-    var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
-    sawBladeHitZone.x = 750;
-    sawBladeHitZone.y = 275;
-    game.addGameItem(sawBladeHitZone);
-    var obstacleImage = draw.bitmap("img/sawblade.png");
-    sawBladeHitZone.addChild(obstacleImage); 
+      var damageFromObstacle = 10;
+      var sawBladeHitZone = game.createObstacle(
+        hitZoneSize,
+        damageFromObstacle
+      );
+      sawBladeHitZone.x = x;
+      sawBladeHitZone.y = y;
+      game.addGameItem(sawBladeHitZone);
+      var obstacleImage = draw.bitmap("img/sawblade.png");
+      obstacleImage.x = -25;
+      obstacleImage.y = -25;
+      sawBladeHitZone.addChild(obstacleImage);
     }
-    createSawBlade()
-
+    createSawBlade(700, 300);
+    createSawBlade(1200, 220);
+    createSawBlade(1500, 300);
+    createSawBlade(1800, 220);
     function startLevel() {
+    
+      function createEnemy(x, y) {
+        var enemy = game.createGameItem("enemy", 25);
+        var redSquare = draw.rect(50, 50, "red");
+        redSquare.x = -25;
+        redSquare.y = -25;
+        enemy.addChild(redSquare);
+        enemy.x = x
+        enemy.y = y
+        enemy.velocityX = -1
+        game.addGameItem(enemy); 
+        enemy.rotationalVelocity = -1000
+
+        enemy.onPlayerCollision = function () {
+          game.changeIntegrity(-10)
+        };
+        enemy.onProjectileCollision = function (){
+          game.increaseScore(100);
+          enemy.shrink();
+        }
+    }
+  
+    createEnemy(400, groundY - 50);
+    createEnemy(800, groundY - 50);
+    createEnemy(1200, groundY - 50);
+    
+    function createReward(x, y) {
+        var reward = game.createGameItem("reward", 25);
+        var blueSquare = draw.rect(50, 50, "blue");
+        blueSquare.x = -25;
+        blueSquare.y = -25;
+        reward.addChild(blueSquare);
+        reward.x = x;
+        reward.y = y
+        reward.velocityX = -1
+        game.addGameItem(reward); 
+        reward.rotationalVelocity = -1000
+
+        reward.onProjectileCollision = function (){
+          game.increaseScore(100);
+          reward.shrink();
+        }
+    }
+    createReward(600, groundY -50)
       // TODO 13 goes below here
-
-
 
       //////////////////////////////////////////////
       // DO NOT EDIT CODE BELOW HERE
